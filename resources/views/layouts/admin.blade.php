@@ -35,10 +35,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">Public view</a>
+                        </li>
+                        <li class="nav-item">
                            <a class="nav-link" href="{{ route('admin.posts.index') }}">Post archive</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="{{ route('home') }}">Public view</a>
+                            <a class="nav-link" href="{{ route('admin.posts.create') }}">Create new post</a>
                         </li>
                     </ul>
 
