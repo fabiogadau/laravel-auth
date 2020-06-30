@@ -100,7 +100,7 @@ class PostController extends Controller
         $data['slug'] = Str::slug($data['title'], '-');
         
         if (!empty($data['path_img'])) {
-            // Delete image
+            // Delete previous image
             if (!empty($post->path_img)){
                 Storage::disk('public')->delete($post->path_img);
             }
@@ -129,9 +129,15 @@ class PostController extends Controller
         }
 
         $title = $post->title;
+
         $deleted = $post->delete();
 
         if ($deleted){
+            // Delete image
+            if (!empty($post->path_img)){
+                Storage::disk('public')->delete($post->path_img);
+            }
+
             return redirect()->route('admin.posts.index')->with('post-deleted', $title);
         }
     }
