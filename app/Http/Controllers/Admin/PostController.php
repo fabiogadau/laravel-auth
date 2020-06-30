@@ -98,6 +98,17 @@ class PostController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::slug($data['title'], '-');
+        
+        if (!empty($data['path_img'])) {
+            // Delete image
+            if (!empty($post->path_img)){
+                Storage::disk('public')->delete($post->path_img);
+            }
+
+            // Set new image
+            $data['path_img'] = Storage::disk('public')->put('images', $data['path_img']);
+        }
+
         $updated = $post->update($data);
 
         if ($updated){
