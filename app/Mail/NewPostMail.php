@@ -33,6 +33,7 @@ class NewPostMail extends Mailable
     public function build()
     {
         return $this->from('site@example.com')
+                    ->subject('New post published')
                     //->view('mail.new-post-mail')
                     ->markdown('mail.new-post-mail')
                     ->with([
