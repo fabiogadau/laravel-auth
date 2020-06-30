@@ -4,7 +4,7 @@
 <div class="container">
    <h1 class="mb-4 text-center">{{ $post->title }}</h1>
 
-   <table class="table">
+   <table class="table mb-5">
       <thead>
          <tr>
             <th>ID</th>
@@ -35,5 +35,16 @@
          </tr>
       </tbody>
    </table>
+
+   <div class="d-flex flex-column align-items-center">
+      <h3 class="mb-y text-center">Post image</h3>
+      @if (!empty($post->path_img))
+         <div class="post-img">
+            <img src="{{ asset('storage/' . $post->path_img) }}" alt="{{ $post->title }}">
+         </div>
+      @else
+         <p>No image for this post</p>
+      @endif
+   </div>
 </div>
 @endsection
