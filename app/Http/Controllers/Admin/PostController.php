@@ -10,6 +10,7 @@ use App\Post;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\NewPostMail;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\UpdatePostMail;
 
 class PostController extends Controller
 {
@@ -117,6 +118,9 @@ class PostController extends Controller
         $updated = $post->update($data);
 
         if ($updated){
+            // Mail notification
+            Mail::to('user@example.com')->send(new UpdatePostMail($post));
+
             return redirect()->route('admin.posts.show', $post->id);
         }
     }
