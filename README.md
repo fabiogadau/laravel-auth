@@ -21,6 +21,6 @@
    Aggiungere la possibilità di caricare un file immagine per i post. Come fatto in classe gestite sia creazione che update che delete del post (ricordate il symbolic link con php artisan storage:link ).
    </li>
    <li>
-   Create un account mailtrap (link sotto) e implementare l’invio di email alla creazione e update di un nuovo post.
+   Create un account mailtrap e implementare l’invio di email alla creazione e update di un nuovo post.
    </li>
 </ul>

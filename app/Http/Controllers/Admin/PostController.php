@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Post;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\NewPostMail;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -59,6 +61,9 @@ class PostController extends Controller
         $saved = $newPost->save();
 
         if ($saved){
+            // Mail notification
+            Mail::to('user@example.com')->send(new NewPostMail($newPost));
+
             return redirect()->route('admin.posts.show', $newPost->id);
         }
     }
